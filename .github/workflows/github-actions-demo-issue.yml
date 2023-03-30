@@ -6,7 +6,7 @@ jobs:
   create-comment:
     permissions: write-all
     runs-on: ubuntu-latest
-    if: ${{ !github.event.issue.pull_request }}
+    if: ${{ !github.event.issue.pull_request && github.event.issue.comments > 3 }}
     steps:
       - uses: actions/github-script@v5
         with:
