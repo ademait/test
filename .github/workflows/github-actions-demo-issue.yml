@@ -7,7 +7,7 @@ jobs:
   issue_commented:
     name: Issue Comment
     if: ${{ !github.event.issue.pull_request }}
-    uses: peter-evans/.github/workflows/create-or-update-comment@v2
+    uses: peter-evans/.github/workflows/create-or-update-comment@v2.yml
     with:
       issue-number: ${{ github.event.issue.number }}
       body: |
