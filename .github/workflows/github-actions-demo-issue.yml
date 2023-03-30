@@ -6,6 +6,7 @@ jobs:
   create-comment:
     permissions: write-all
     runs-on: ubuntu-latest
+    if: ${{ !github.event.issue.pull_request }}
     steps:
       - uses: KeisukeYamashita/create-comment@v1
         with:
