@@ -8,11 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !github.event.issue.pull_request }}
     steps:
-      - uses: KeisukeYamashita/create-comment@v1
+      - uses: actions/github-script@v5
         with:
-          comment: |
-            This is a multi-line test comment
-            - With GitHub **Markdown** :sparkles:
-            - Created by [create-or-update-comment][1]
-
-            [1]: https://github.com/peter-evans/create-or-update-comment
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
