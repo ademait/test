@@ -4,6 +4,7 @@ on:
     types: [created]
 jobs:
   create-comment:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: KeisukeYamashita/create-comment@v1
