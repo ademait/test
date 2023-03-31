@@ -1,19 +1,19 @@
-name: Answer on the third comment of an issue
-run-name: ${{ github.actor }}  is testing out GitHub Actions 🚀
+name: Create comment
 on: 
   issue_comment:
     types: [created]
 jobs:
-  issue_commented:
-    name: Issue Comment
-    if: ${{ !github.event.issue.pull_request }}
-    uses: peter-evans/create-or-update-comment@v2
-    with:
-      issue-number: ${{ github.event.issue.number }}
-      body: |
-        This is a multi-line test comment
-            - With GitHub **Markdown** :sparkles:
-            - Created by [create-or-update-comment][1]
-        
-        [1]: https://github.com/peter-evans/create-or-update-comment
-      reactions: +1
+  create-comment:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.issue.pull_request && github.event.issue.comments == 3 }}
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: String(context.issue.comments)
+            })
