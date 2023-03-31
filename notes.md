@@ -47,3 +47,7 @@ These are optional and are used to identify the action and workflow run in the a
 
             * We can use either `uses` (along with the `with` keyword to specify the parametres) or `run` (to execute a command on the runner).
 
+
+An illustrative example can be:
+
+![image](https://docs.github.com/assets/cb-33882/mw-1000/images/help/actions/overview-actions-event.webp)
