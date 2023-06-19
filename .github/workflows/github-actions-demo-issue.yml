@@ -1,19 +1,20 @@
-name: Create comment
-on: 
-  issue_comment:
-    types: [created]
-jobs:
-  create-comment:
-    permissions: write-all
-    runs-on: ubuntu-latest
-    if: ${{ !github.event.issue.pull_request && github.event.issue.comments == 3 }}
-    steps:
-      - uses: actions/github-script@v5
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: String(context.issue.comments)
-            })
+#name: Create comment
+#on: 
+#  issue_comment:
+#    types: [created]
+#jobs:
+#  create-comment:
+#    permissions: write-all
+#    runs-on: ubuntu-latest
+#    if: ${{ !github.event.issue.pull_request && github.event.issue.comments == 3 }}
+#    steps:
+#      - uses: actions/github-script@v5
+#        with:
+#          script: |
+#            github.rest.issues.createComment({
+#              issue_number: context.issue.number,
+#              owner: context.repo.owner,
+#              repo: context.repo.repo,
+#              body: String(context.issue.comments)
+#            })
+#
